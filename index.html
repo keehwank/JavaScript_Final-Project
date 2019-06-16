@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+    <title> ATM </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+              
+              var currrentBalance = 1000;
+              
+              $('#loginButton').click(function() {
+  
+                 var firstName = $('#firstName').val();
+                 var lastName = $('#lastName').val();
+                 var customerName = "Name : " + firstName + " " + lastName;
+                 $('#customerName').html(customerName);
+                 
+                 $('#welcome').show();
+                 $('#pTagMainMenu').show();
+                 $('#balanceMenuButton').show();
+                 $('#depositMenuButton').show();
+                 $('#withdrawMenuButton').show();
+                 $('#exitMenuButton').show();
+                 
+                 $('#custName').hide();
+                 $('#loginButton').hide();
+                 
+              });
+              
+              $('#balanceMenuButton').click(function() {
+                 
+                 var currrentBalanceString = "Your current balance is : $" + currrentBalance;
+                 $('#currentBalance').html(currrentBalanceString);
+                 
+                 $('#welcome').hide();
+                 $('#pTagMainMenu').hide();
+                 $('#customerName').hide();
+                 $('#balanceMenuButton').hide();
+                 $('#depositMenuButton').hide();
+                 $('#withdrawMenuButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#custName').hide();
+                 $('#loginButton').hide();
+                 
+                 $('#continueButton').show();
+                 $('#exitDeposit').show();
+              });  
+              
+              $('#depositMenuButton').click(function() {
+  
+                 var currrentBalanceString = "Your current balance is : $" + currrentBalance;
+                 $('#currentBalance').html(currrentBalanceString);
+                 
+                 $('#welcome').hide();
+                 $('#pTagMainMenu').hide();
+                 $('#customerName').hide();
+                 $('#balanceMenuButton').hide();
+                 $('#depositMenuButton').hide();
+                 $('#withdrawMenuButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#custName').hide();
+                 $('#loginButton').hide();
+                 $('#deposit').show();
+                 $('#okDeposit').show();
+              });
+              
+              $('#okDeposit').click(function() {
+ 
+                 var dAmount = $('#depositAmount').val();
+                 
+                 if ($('#depositAmount').val() == "")                
+                    var dAmount = '0';
+                 
+                 currrentBalance = parseInt(currrentBalance) + parseInt(dAmount);
+                 var currrentBalanceString = "Your current balance is : $" + currrentBalance;
+                 
+                 $('#currentBalance').html(currrentBalanceString);
+                 
+                 $('#deposit').hide();
+                 $('#okDeposit').hide();
+                 $('#continueButton').show();
+                 $('#exitDeposit').show();
+                  
+              });  
+              
+              $('#continueButton').click(function() {
+                 
+                 $('#pTagMainMenu').show();
+                 $('#balanceMenuButton').show();
+                 $('#depositMenuButton').show();
+                 $('#withdrawMenuButton').show();
+                 $('#exitMenuButton').show();
+                 
+                 $('#continueButton').hide();
+                 $('#exitDeposit').hide();
+              });     
+                 
+              $('#exitDeposit').click(function() {
+                 
+                 document.location.reload(true);
+                 
+                 $('#currentBalance').hide();
+                 $('#pTagMainMenu').hide();
+                 $('#balanceMenuButton').hide();
+                 $('#depositMenuButton').hide();
+                 $('#withdrawMenuButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#continueButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#exitDeposit').hide();
+                 
+                 $('#custName').show();
+                 $('#loginButton').show();
+              });  
+              
+              $('#withdrawMenuButton').click(function() {
+                 
+                 var currrentBalanceString = "Your current balance is : $" + currrentBalance;
+                 $('#currentBalance').html(currrentBalanceString);
+                 
+                 $('#welcome').hide();
+                 $('#pTagMainMenu').hide();
+                 $('#customerName').hide();
+                 $('#balanceMenuButton').hide();
+                 $('#depositMenuButton').hide();
+                 $('#withdrawMenuButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#custName').hide();
+                 $('#loginButton').hide();
+                 $('#withdraw').show();
+                 $('#okWithdraw').show();
+             });  
+             
+             $('#okWithdraw').click(function() {
+                 
+                 var wAmount = $('#withdrawAmount').val();
+                 
+                 if ($('#withdrawAmount').val() == "")                
+                    var wAmount = '0';
+                    
+                 if (parseInt(currrentBalance) - parseInt(wAmount) < 0)
+                 {
+                     var errorMessageString = "Your Balance is not enough. Try it again, please.";
+                     $('#errorMessage').html(errorMessageString);
+                     var currrentBalanceString = "Your current balance is : $" + currrentBalance;
+                     $('#currentBalance').html(currrentBalanceString);
+                     
+                     $('#welcome').hide();
+                     $('#pTagMainMenu').hide();
+                     $('#customerName').hide();
+                     $('#balanceMenuButton').hide();
+                     $('#depositMenuButton').hide();
+                     $('#withdrawMenuButton').hide();
+                     $('#exitMenuButton').hide();
+                     $('#custName').hide();
+                     $('#loginButton').hide();
+                     $('#withdraw').show();
+                     $('#okWithdraw').show();
+                 }
+                 else
+                 {
+                     currrentBalance = parseInt(currrentBalance) - parseInt(wAmount);
+                     var currrentBalanceString = "Your current balance is : $" + currrentBalance;
+                     $('#currentBalance').html(currrentBalanceString);
+                 
+                     $('#withdraw').hide();
+                     $('#okWithdraw').hide();
+                     $('#continueButton').show();
+                     $('#exitDeposit').show();
+                 }
+             });       
+                 
+             $('#exitMenuButton').click(function() {
+                 
+                 document.location.reload(true);
+                 
+                 $('#currentBalance').hide();
+                 $('#pTagMainMenu').hide();
+                 $('#balanceMenuButton').hide();
+                 $('#depositMenuButton').hide();
+                 $('#withdrawMenuButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#continueButton').hide();
+                 $('#exitMenuButton').hide();
+                 $('#exitDeposit').hide();
+                 
+                 $('#custName').show();
+                 $('#loginButton').show();   
+             
+              });  
+              
+        });
+        
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>ATM</h1>
+    </header>
+
+    <main>
+        <h1>WLAC Community Bank</h1> <br/>
+        <h2 id="welcome" style="display: none">Welcom!!!</h2>
+        
+        <form name="nameForm" id="custName" action="" method="post" style="display: block">
+    
+            <fieldset id="yourName"><legend>Your Name</legend>
+                <p>Please enter your name below.</p>
+	            <label><span>First Name</span><input id="firstName" type="string"></label>
+                <label><span>Last Name</span><input id="lastName" type="string"></label>
+            </fieldset>  
+        </form>
+        <button id="loginButton" type="button">Log In</button>
+        <br/><br/>
+        <form>
+            <div id="customerName" ></div>
+            <br/>
+            <div id="errorMessage" ></div>
+            <br/>
+            <div id="currentBalance" ></div> <br/><br/>
+        </form>
+        
+        <p id="pTagMainMenu" style="display: none">Please select one of menu.</p>
+        <button id="balanceMenuButton" type="button" style="display: none">Balance</button><br/>
+        <button id="depositMenuButton" type="button" style="display: none">Deposit</button><br/>
+        <button id="withdrawMenuButton" type="button" style="display: none">Withdraw</button><br/>
+        <button id="exitMenuButton" type="button" style="display: none">Exit</button><br/>
+        <br/><br/>
+        
+        <form name="depositForm" id="deposit" action="" method="post" style="display: none">
+            <fieldset id="wts2" type="text/css">
+                <legend>Deposit</legend>
+                <p>Please enter the amount of deposit.</p>
+	            <label><span>Deposit Amount</span><input id="depositAmount" name="DepositAmt" type="number">Dollars</label>
+	            
+            </fieldset>
+            <button id="okDeposit" type="button" >OK</button>
+        </form>
+        
+        <button id="continueButton" type="button" style="display: none">Continue</button>
+        <button id="exitDeposit" type="button" style="display: none">Exit</button>
+        
+        <form name="withdrawForm" id="withdraw" action="" method="post" style="display: none">
+            <fieldset id="wts3" type="text/css">
+                <legend>Withdraw</legend>
+                <p>Please enter the amount of withdrawal.</p>
+	            <label><span>Withdrawal Amount</span><input id="withdrawAmount" name="Withdraw Amount" type="number">Dollars</label>
+	        </fieldset>
+            <button id="okWithdraw" type="button" >OK</button>
+        </form>
+        
+        
+        
+        
+    </main>
+</body>
+
+<script type="text/javascript" src="js/main.js"></script>
+</html>
